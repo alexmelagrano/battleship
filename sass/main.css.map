@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA;;;EAGE;AAYM,0DAAkD;AAClD,qEAA6D;AChBrE,UAAW;EACP,iBAAiB,EAAE,OAAO",
+"sources": ["main.scss","board/_grid.scss"],
+"names": [],
+"file": "main.css"
+}
