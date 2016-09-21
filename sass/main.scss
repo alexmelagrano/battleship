@@ -15,3 +15,10 @@ Overarching SCSS file for the "/sass" folder - compiles into the "main.css" file
 
 @import url("http://overpass-30e2.kxcdn.com/overpass.css");
 @import 'https://fonts.googleapis.com/css?family=Roboto+Slab:300,400';
+
+
+
+// Setting up the game's board
+.cell {
+    @extends %cell;
+}

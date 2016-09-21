@@ -1,0 +1,9 @@
+// Various SCSS Placeholders
+
+@import "variables";
+
+%cell{
+    width: $cellWidth;
+    height: $cellHeight;
+    border: 2px solid #efefef;
+}
