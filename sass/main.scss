@@ -21,4 +21,8 @@ Overarching SCSS file for the "/sass" folder - compiles into the "main.css" file
 // Setting up the game's board
 .cell {
     @extends %cell;
+    
+    &:hover {
+        background-color: rgba(0, 0, 0, .4);
+    }
 }

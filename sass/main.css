@@ -15,5 +15,7 @@ Overarching SCSS file for the "/sass" folder - compiles into the "main.css" file
 
 .cell {
   @extends %cell; }
+  .cell:hover {
+    background-color: rgba(0, 0, 0, 0.4); }
 
 /*# sourceMappingURL=main.css.map */

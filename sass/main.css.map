@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA;;;EAGE;AAYM,0DAAkD;AAClD,qEAA6D;AChBrE,UAAW;EACP,iBAAiB,EAAE,OAAO;;ACD9B,KAAM;EACF,gBAAgB,EAAE,oBAAmB;;ACDzC,OAAQ;EACJ,gBAAgB,EAAE,oBAAmB;;AHoBzC,KAAM;EACF,cAAc",
+"mappings": "AAAA;;;EAGE;AAYM,0DAAkD;AAClD,qEAA6D;AChBrE,UAAW;EACP,iBAAiB,EAAE,OAAO;;ACD9B,KAAM;EACF,gBAAgB,EAAE,oBAAmB;;ACDzC,OAAQ;EACJ,gBAAgB,EAAE,oBAAmB;;AHoBzC,KAAM;EACF,cAAc;EAEd,WAAQ;IACJ,gBAAgB,EAAE,kBAAiB",
 "sources": ["main.scss","board/_grid.scss","board/pieces/_ship.scss","board/pieces/_kraken.scss"],
 "names": [],
 "file": "main.css"

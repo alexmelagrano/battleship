@@ -26,7 +26,7 @@ var onBoard = function(newP) {
     newP.x < 10 && newP.x >= 0 && newP.y < 10 && newP.y > 0; 
 }
 
-var isDup = function(newP, list) {
+var isDupHelper = function(newP, list) {
     for(count i = 0, i < list.length, i ++){
         var p = list[i];
         if (newP.x == p.x || newP.y == p.y){
@@ -35,6 +35,19 @@ var isDup = function(newP, list) {
     }
     return false;
 }
+        
+var isDup = function(newP) {    
+    for(count i = 0, i < krakenLoc.length, i ++){
+        var p = list[i];
+        if (newP.x == p.x || newP.y == p.y){
+            return true;
+        }
+    }
+    for(count j = 0, j < ships.length, j ++){
+        isDupHelper(newP, ships[j]);
+    }
+    return false;
+}        
 
 // Initialization functions
 // ======================================
@@ -51,6 +64,26 @@ var initBoard = function() {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     }
     
+}
+
+// Setting up player's ship locations
+var ship2 = [];
+var ship3 = [];
+var ship4 = [];
+var ship5 = [];
+    
+var ships = []:
+
+var initShips = function() {
+    
+    
+    
+    // DO SOME WIZARDY SHIT HERE LATER ON
+    
+    ships.push(ship2);
+    ships.push(ship3);
+    ships.push(ship4);
+    ships.push(ship5);
 }
 
 // Setting up Kraken's location
@@ -81,29 +114,10 @@ var initKraken = function() {
             newPoint.y -= 1;
         }
         
-        if(onBoard(newPoint) && !isDup(newPoint, krakenLoc)){
+        if(onBoard(newPoint) && !isDup(newPoint)){
             krakenLoc.push(newPoint);
         }
     }
-}
-
-// Setting up player's ship locations
-var ship2 = [];
-var ship3 = [];
-var ship4 = [];
-var ship5 = [];
-    
-var ships = []:
-
-var initShips = function() {
-    
-    // DO SOME WIZARDY SHIT HERE LATER ON
-
-    
-    ships.push(ship2);
-    ships.push(ship3);
-    ships.push(ship4);
-    ships.push(ship5);
 }
 
 
