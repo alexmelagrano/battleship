@@ -6,8 +6,7 @@
 // Main function
 var main = function() {
     initBoard = new board();
-    initGame = new game();
-    
+    initGame = new game();    
 }
 
 
@@ -20,34 +19,69 @@ var main = function() {
 // Various Helper Functions 
 // =====================================
 
+// Global variables
+var curCell = '0-0';
+var state = 'wait';
 var random = Math.floor((Math.random() * 10) + 1);
 
-var onBoard = function(newP) {
-    newP.x < 10 && newP.x >= 0 && newP.y < 10 && newP.y > 0; 
+// Position helpers
+var getX = function(p) {
+    return p.pop();
+}
+var getY = function(p) {
+    return p.split('-').pop();
+}
+var getID = function(cell) {
+    curCell = cell.id;
+    return cell.id;
 }
 
+
+// Location validators
+var onBoard = function(newP) {
+    newP.getX() < 10 && newP.getX() >= 0 && newP.getY() < 10 && newP.getY() > 0; 
+}
 var isDupHelper = function(newP, list) {
-    for(count i = 0, i < list.length, i ++){
-        var p = list[i];
-        if (newP.x == p.x || newP.y == p.y){
+    var p = list[i];
+    for(var i = 0; i < list.length; i += 1){
+        if (newP.x == p.getX() || newP.y == p.getY()){
             return true;
         }
     }
     return false;
-}
-        
-var isDup = function(newP) {    
-    for(count i = 0, i < krakenLoc.length, i ++){
+}      
+var isDup = function(cellID) {  
+    var newP = { x: cellID.getX(),
+                 y: cellID.getY() };
+    for (var i = 0; i < krakenLoc.length; i += 1){
         var p = list[i];
-        if (newP.x == p.x || newP.y == p.y){
+        if (newP.x == p.getX() || newP.y == p.getY()){
             return true;
         }
     }
-    for(count j = 0, j < ships.length, j ++){
+    for(var j = 0; j < ships.length; j += 1){
         isDupHelper(newP, ships[j]);
     }
     return false;
-}        
+}  
+    
+
+
+
+// Input handling
+// ======================================
+
+var mouseHandler = function(Element) {
+    cellID = getID(Element);
+    
+    // initialization stages
+    if(state.includes("initShip"){
+        var x = state.split("initShip").pop();
+        if(onBoard(cellID) && !isDup(cellID) && //%^(&*)*&^(!isAdjacent(cellID)&^%^&^))
+    }
+}
+
+
 
 // Initialization functions
 // ======================================
@@ -56,12 +90,10 @@ var isDup = function(newP) {
 var grid = [];
 
 var initBoard = function() {
-    canvas : document.createElement("canvas");
-    start : function() {
-        this.canvas.width = 500;
-        this.canvas.height = 500;
-        this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    var cells = document.getElementsByClassName('cell');
+    
+    for(var i = 0; i < cells.length; i += 1){
+        cells[i].addEventListener('click', mouseHandler(cells[i]));
     }
     
 }
@@ -76,6 +108,22 @@ var ships = []:
 
 var initShips = function() {
     
+    var curShip = 0
+    // hey you - pick your ships
+        
+    // yeah, you! choose your ships, bitch!
+    for(var i = 2; i <= 5; i += 1) {
+        window.alert("Place your " + i + "-cell ship!");
+        curShip = i;
+        state = ("initShip" + i);
+        var numPlaces = 0;
+        while(state == "initShip") {
+            if(numPlaces = curShip){
+                state = "wait";
+            }
+        }
+        
+    }    
     
     
     // DO SOME WIZARDY SHIT HERE LATER ON
@@ -93,7 +141,7 @@ var krakenLoc = [];
 var initKraken = function() {
     var center = { x: new random,
                    y: new random };
-    krakenLoc.push(center);
+    krakenLoc.push((center.x + "-" + center.y));
     
     while(krakenLoc.length < 7){
         var newPoint = { x: center.x,
@@ -128,16 +176,16 @@ var initKraken = function() {
 // Drawing the board
 var drawBoard = function() {
     // ships
-    for(count i = 0, i < ships.length, i ++){
+    for(var i = 0; i < ships.length; i += 1){
         var curShip = ships[i];
-        for(count j = 0, j < curShip.length, j ++){
+        for(var j = 0; j < curShip.length; j += 1){
             var gridPoint = curShip[j].x + "-" + curShip[j].y;
             document.getElementById(gridPoint).classList.add("ship");
         }
     }
     
     // kraken
-    for(count i = 0, i < krakenLoc, i ++){
+    for(var i = 0; i < krakenLoc; i += 1){
         var gridPoint = krakenLoc[i].x + "-" + krakenLoc[i].y;
         document.getElementById(gridPoint).classList.add("kraken");
     }
